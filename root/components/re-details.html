@@ -1,0 +1,73 @@
+<div x-show="isLoading" class="loading">
+    <div class="spinner"></div>
+    <p>Loading regions data...</p>
+</div>
+
+<div x-show="!isLoading && regionToShow">
+    <div class="region-header">
+        <div class="region-title">
+            <i class="fas fa-map-marker-alt"></i>
+            <span x-text="regionToShow?.name"></span>
+        </div>
+
+        <div class="region-stats">
+            <div class="stat-card">
+                <div class="stat-number" x-text="regionDetails.district?.length || 0"></div>
+                <div class="stat-label">Districts</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number"
+                    x-text="regionDetails.district?.reduce((total, dist) => total + (dist?.commune.length || 0), 0) || 0">
+                </div>
+                <div class="stat-label">Communes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" x-text="regionDetails.district?.reduce((total, dist) => 
+                                    total + dist.commune?.reduce((subTotal, com) => 
+                                        subTotal + (com.fokontany?.length || 0), 0), 0) || 0">
+                </div>
+                <div class="stat-label">Fokontany</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="districts-container">
+        <h3 style="font-size: 1.5rem; font-weight: 600; color: var(--text-dark);">
+            Districts <span x-text="regionDetails.district?.length || 0"></span>
+        </h3>
+
+        <div x-show="!regionDetails.district?.length" class="empty-state">
+            <i class="fas fa-map"></i>
+            <p>No district data available for this region</p>
+        </div>
+
+        <div class="districts-grid">
+            <template x-for="district in (sortRegionsByName(regionDetails.district) || [])" :key="district?.name">
+                <div class="district-card">
+                    <h4 class="district-name" x-text="district?.name || 'N/A'"></h4>
+                    <div class="commune-badge">
+                        <i class="fas fa-building"></i>
+                        <span x-text="district.commune?.length || 0"></span>
+                        <span>Communes</span>
+                    </div>
+                    <div style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-light);">
+                        <template x-if="district.commune && district.commune.length > 0">
+                            <p>Includes: <span
+                                    x-text="district.commune.slice(0, 3).map(c => c?.name).join(', ')"></span>
+                                <template x-if="district.commune.length > 3">
+                                    <div>...</div>
+                                </template>
+                            </p>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+</div>
+
+<div x-show="!isLoading && !regionToShow" class="empty-state">
+    <i class="fas fa-map-marked-alt" style="font-size: 4rem;"></i>
+    <h3 style="margin: 1rem 0 0.5rem;">Select a Region</h3>
+    <p>Choose a region from the sidebar to view its details</p>
+</div>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/bab7a8192c.js" crossorigin="anonymous"></script>
+    <script src="libraries/alpine.js" defer></script>
+    <script src="libraries/w3.js"></script>
+    <script src="libraries/treefunctions.js"></script>
+    <link rel="stylesheet" href="root/www/style.css">
+    <link rel="shortcut icon" href="/root/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/root/img/favicon.png">
+
+    <title>MAURINO CLEVER EXPERT COMPANY SARL – Template Project</title>
+
+    <meta name="description"
+        content="This is a template project for interview candidates. The file property belongs to MAURINO CLEVER EXPERT COMPANY SARL – Madagascar, Antananarivo." />
+    <meta name="author" content="MAURINO CLEVER EXPERT COMPANY SARL" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook & other social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MAURINO CLEVER EXPERT COMPANY SARL" />
+    <meta property="og:title" content="Template Project – CleverExpert Company SARL" />
+    <meta property="og:description"
+        content="An interview template project for front-end & back-end candidates. Company: MAURINO CLEVER EXPERT COMPANY SARL, Madagascar." />
+    <meta property="og:url" content="https://www.maurino.in/" />
+    <meta property="og:image"
+        content="https://cdn.vectorstock.com/i/500p/58/95/robot-vs-human-job-interview-vector-47715895.jpg" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Template Project – CleverExpert Company SARL" />
+    <meta name="twitter:description"
+        content="An interview template project for front-end & back-end candidates. Company: MAURINO CLEVER EXPERT COMPANY SARL, Madagascar." />
+    <meta name="twitter:image"
+        content="https://cdn.vectorstock.com/i/500p/58/95/robot-vs-human-job-interview-vector-47715895.jpg" />
+    <!-- optionally add twitter:site, twitter:creator if you have a Twitter handle -->
+
+    <!-- Canonical (optional) -->
+    <link rel="canonical" href="https://www.maurino.in/" />
+
+    <!-- Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+</head>
+
+<body x-data="appState">
+
+    <!-- ———————————————————————————————— -->
+    <!-- CAHIER DES CHARGES / TEST TECHNIQUE (pour le candidat) -->
+    <!-- ———————————————————————————————— -->
+    <!--
+    Projet : Template d’entretien technique pour candidat
+    Entreprise : MAURINO CLEVER EXPERT COMPANY SARL – Antananarivo, Madagascar
+    Contacts : anjun.maurino@gmail.com , finance.cleverex@gmail.com
+
+    Objectif :
+      Réaliser une petite application web full-stack (front-end + back-end) permettant d’évaluer les compétences du candidat.
+
+    Fonctionnalités exigées – Front-end (niveau moyen) :
+      • Interface responsive (mobile + desktop)
+      • Formulaire de création et liste d’« éléments » (ex. : tâches, utilisateurs, ou enregistrements simples)
+      • Récupération des données depuis le back-end et affichage dans une liste ou un tableau
+      • Possibilité d’ajouter / modifier / supprimer des éléments (CRUD complet)
+      • Validation des saisies, gestion d’erreurs, feedback utilisateur (états de chargement, messages d’erreur ou de succès)
+      • Si pertinent : barre de recherche/filtre simple
+      • Code propre, lisible, bien structuré, modularisé, avec un style CSS soigné (ou CSS-in-JS)
+      • Optionnel : routage côté client (SPA), gestion d’état basique si nécessaire
+
+    Fonctionnalités exigées – Back-end (niveau moyen – candidat tout juste diplômé Master 1) :
+      • API REST simple (ou GraphQL) supportant les opérations CRUD sur les éléments
+      • Persistance des données (en mémoire acceptée, ou fichier plat / JSON / SQLite / base minimale)
+      • Validation des données en entrée et gestion basique des erreurs
+      • Documentation claire de l’API (README ou documentation auto-générée)
+      • Authentification simple optionnelle (non obligatoire) – si implémentée, rester minimaliste (token ou session)
+      • Structure de projet claire : séparation des responsabilités, dossiers/fichiers organisés, nommage explicite
+
+    Contraintes du test / remarques :
+      • Temps estimé : le candidat ne doit pas dépasser environ 48 à 72 heures de travail
+      • Minimiser les dépendances ; privilégier les outils natifs, JavaScript vanilla ou frameworks légers (éviter le sur-engineering)
+      • Le projet doit pouvoir être lancé sans configuration complexe (hormis des instructions simples)
+      • README clair avec : instructions d’installation, lancement, description des endpoints API et format des données attendues
+
+    Bonus / Optionnel (si le temps et les compétences le permettent) :
+      • Front-end : recherche/filtrage en temps réel, pagination
+      • Back-end : persistance dans une base légère, authentification simple avec token (ex. JWT)
+      • Intégration front/back : états de chargement, validation côté client + serveur
+      • Instructions de déploiement (Docker, scripts npm, variables d’environnement, etc.)
+      • Tests unitaires basiques (front et/ou back)
+      • Utilisation de JavaScript/TypeScript moderne, code propre, commentaires, linter, style cohérent
+
+    Note :
+      Ce template et ce cahier des charges sont fournis au candidat dans le cadre de l’entretien technique.
+      Tous les droits sur les fichiers et la propriété intellectuelle appartiennent à la société 
+      MAURINO CLEVER EXPERT COMPANY SARL, Madagascar.
+-->
+
+    <!-- Search modal -->
+    <div class="w3-modal w3-card" id="searchSidebar" w3-include-html="root/components/re-floating-searchbar.html">
+    </div>
+
+    <!-- Blue Sticky header -->
+    <header class="app-header" w3-include-html="root/components/re-header.html"> </header>
+
+    <!-- search result Treeview -->
+    <section class="hierarchical-search-section" w3-include-html="root/components/re-search.html"></section>
+
+    <main class="main-container">
+        <!-- Regions Sidebar -->
+        <aside class="regions-sidebar" w3-include-html="root/components/re-sidebar.html"> </aside>
+        <!-- Region Details -->
+        <div class="region-panel" w3-include-html="root/components/re-details.html"></div>
+    </main>
+
+    <script src="root/www/w3cssJs/custom-w3script.js"></script>
+    <script src="root/www/app.state.js"></script>
+    <script src="root/www/index.js"> </script>
+</body>
+
+</html>

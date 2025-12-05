@@ -1,0 +1,19 @@
+#searchSidebar {
+    z-index: 99999999999999;
+    width: 100%;
+    display: none;
+}
+
+/* Hide scrollbar globally but keep scrolling */
+html,
+body {
+    /* For IE, Edge */
+    -ms-overflow-style: none;
+    /* For Firefox */
+    scrollbar-width: none;
+}
+
+/* For Chrome, Safari, Opera, Edge (WebKit / Blink) */
+::-webkit-scrollbar {
+    display: none;
+}
